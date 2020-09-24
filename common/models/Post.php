@@ -5,11 +5,11 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "Post".
+ * This is the model class for table "post".
  *
  * @property int $id
  * @property string $title
- * @property string|null $shot_description
+ * @property string|null $short_description
  * @property string|null $description
  * @property int|null $is_active
  * @property int|null $created_at
@@ -24,7 +24,7 @@ class Post extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Post';
+        return 'post';
     }
 
     /**
@@ -37,7 +37,7 @@ class Post extends \yii\db\ActiveRecord
             [['description'], 'string'],
             [['is_active', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'integer'],
             [['title'], 'string', 'max' => 250],
-            [['shot_description'], 'string', 'max' => 400],
+            [['short_description'], 'string', 'max' => 400],
         ];
     }
 
@@ -49,7 +49,7 @@ class Post extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
-            'shot_description' => 'Shot Description',
+            'short_description' => 'Short Description',
             'description' => 'Description',
             'is_active' => 'Is Active',
             'created_at' => 'Created At',

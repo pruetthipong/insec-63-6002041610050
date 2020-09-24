@@ -18,7 +18,7 @@ class PostSearch extends Post
     {
         return [
             [['id', 'is_active', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'integer'],
-            [['title', 'shot_description', 'description'], 'safe'],
+            [['title', 'short_description', 'description'], 'safe'],
         ];
     }
 
@@ -67,7 +67,7 @@ class PostSearch extends Post
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'shot_description', $this->shot_description])
+            ->andFilterWhere(['like', 'short_description', $this->short_description])
             ->andFilterWhere(['like', 'description', $this->description]);
 
         return $dataProvider;
