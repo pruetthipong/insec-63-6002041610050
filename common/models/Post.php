@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string $title
- * @property string|null $short_description
+ * @property string|null $shot_description
  * @property string|null $description
  * @property int|null $is_active
  * @property int|null $created_at
@@ -37,7 +37,7 @@ class Post extends \yii\db\ActiveRecord
             [['description'], 'string'],
             [['is_active', 'created_at', 'created_by', 'updated_at', 'updated_by'], 'integer'],
             [['title'], 'string', 'max' => 250],
-            [['short_description'], 'string', 'max' => 400],
+            [['shot_description'], 'string', 'max' => 400],
         ];
     }
 
@@ -49,7 +49,7 @@ class Post extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Title',
-            'short_description' => 'Short Description',
+            'shot_description' => 'Shot Description',
             'description' => 'Description',
             'is_active' => 'Is Active',
             'created_at' => 'Created At',
