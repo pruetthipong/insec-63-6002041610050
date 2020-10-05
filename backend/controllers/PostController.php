@@ -70,6 +70,8 @@ class PostController extends Controller
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+    }else {
+        echo" Please login ";
     }
     }
     /**
@@ -89,6 +91,8 @@ class PostController extends Controller
         return $this->render('create', [
             'model' => $model,
         ]);
+    }else {
+        echo" Please login ";
     }
     }
     /**
@@ -110,6 +114,8 @@ class PostController extends Controller
         return $this->render('update', [
             'model' => $model,
         ]);
+    }else {
+        echo" Please login ";
     }
     }
     /**
@@ -125,6 +131,8 @@ class PostController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }else {
+        echo" Please login ";
     }
     }
     /**
