@@ -4,18 +4,18 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\PostSearch */
+/* @var $searchModel backend\models\AuthItemSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Posts';
+$this->title = 'Auth Items';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="post-index">
+<div class="auth-item-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Post', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Auth Item', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -26,20 +26,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'title',
-            'shot_description',
+            'name',
+            'type',
             'description:ntext',
-            'is_active',
+            'rule_name',
+            'data',
             //'created_at',
-            //'created_by',
             //'updated_at',
-            //'updated_by',
-            
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
-       
     ]); ?>
 
 

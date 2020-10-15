@@ -34,7 +34,7 @@ public function beforeAction($action) {
     }
     else{
         // echo 'do not access '.$permissiom;
-        throw new ForbiddenHttpException('Contact Administrator');
+        throw new ForbiddenHttpException('คุณไม่มีสิทธิ์เข้าใช้งานส่วนนี้ ติดต่อผู้ดูแลระบบ');
     }
 
 }
