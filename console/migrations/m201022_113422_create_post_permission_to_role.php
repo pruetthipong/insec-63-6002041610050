@@ -13,24 +13,30 @@ class m201022_113422_create_post_permission_to_role extends Migration
     public function safeUp()
     {
         $auth = Yii::$app->authManager;
-        //getRole
+        
+        // get role
         $author = $auth->getRole('author');
-        $admin = $auth->createRole('admin');
-        $superAdmin = $auth->createRole('super-admin');
-        //getPermission
+        $admin = $auth->getRole('admin');
+        $superAdmin = $auth->getRole('super-admin');
+
+        //get Permission
         $listPost = $auth->getPermission('post-index');
         $createPost = $auth->getPermission('post-create');
-        $deletePost = $auth->createPermission('post-delete');
-        $updatePost = $auth->createPermission('post-update');
-        $viewPost = $auth->createPermission('post-view');
+        $deletePost = $auth->getPermission('post-delete');
+        $updatePost = $auth->getPermission('post-update');
+        $viewPost = $auth->getPermission('post-view');
+
         //assign
-        $auth->addChild($author, $createPost);
-        $auth->addChild($author, $listPost);
-        $auth->addChild($author, $viewPost);
-        $auth->addChild($author, $updatePost);
-        $auth->addChild($admin, $author);
-        $auth->addChild($superAdmin, $admin);
-        $auth->addChild($superAdmin, $deletePost);
+        $auth->addChild($author,$createPost);
+        $auth->addChild($author,$listPost);
+        $auth->addChild($author,$viewPost);
+        $auth->addChild($author,$updatePost);
+
+        $auth->addChild($admin,$author);
+
+        $auth->addChild($superAdmin,$admin);
+        $auth->addChild($superAdmin,$deletePost);
+
 
     }
 
@@ -39,9 +45,41 @@ class m201022_113422_create_post_permission_to_role extends Migration
      */
     public function safeDown()
     {
-        echo "m201022_113422_create_post_permission_to_role cannot be reverted.\n";
+        
+        $auth = Yii::$app->authManager;
 
-        return false;
+         // get role
+         $author = $auth->getRole('author');
+         $admin = $auth->getRole('admin');
+         $superAdmin = $auth->getRole('super-admin');
+ 
+         //get Permission
+         $listPost = $auth->getPermission('post-index');
+         $createPost = $auth->getPermission('post-create');
+         $deletePost = $auth->getPermission('post-delete');
+         $updatePost = $auth->getPermission('post-update');
+         $viewPost = $auth->getPermission('post-view');
+ 
+         //assign
+         $auth->removeChild($author,$createPost);
+         $auth->removeChild($author,$listPost);
+         $auth->removeChild($author,$viewPost);
+         $auth->removeChild($author,$updatePost);
+ 
+         $auth->removeChild($admin,$author);
+ 
+         $auth->removeChild($superAdmin,$admin);
+         $auth->removeChild($superAdmin,$deletePost);
+        
+
+
+
+
+
+
+        //echo "m201022_113422_create_post_permission_to_role cannot be reverted.\n";
+
+        return true;
     }
 
     /*
